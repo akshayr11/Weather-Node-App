@@ -1,6 +1,6 @@
 const request = require("request");
 const APIKEY = "9d14b7a32a3d37f8330861ad86a5fb16";
-const geocodeAddress = function(address, callback) {
+const geocodeAddress = (address, callback) => {
 	const encodedAddress = encodeURIComponent(address);
 	request(
 		{
@@ -14,8 +14,8 @@ const geocodeAddress = function(address, callback) {
 				callback(`${body.message}`);
 			} else if (body.cod === 200) {
 				const res = {
-					Latitude: body.coord.lon,
-					Longitude: body.coord.lat
+					lat: body.coord.lon,
+					lng: body.coord.lat
 				};
 				callback(undefined, res);
 			}
